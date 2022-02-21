@@ -1,3 +1,18 @@
-<h2>Movie List</h2>
-<movie></movie>
-<movie></movie>
+<movie-detail [movie]="selectedMovie"></movie-detail>
+<div class="card">
+  <div class="card-header">
+    {{ title }}
+  </div>
+</div>
+<ul class="list-group">
+  <li
+    *ngFor="let movie of movies"
+    (click)="onSelect(movie)"
+    class="list-group-item"
+    [class.active]="movie == selectedMovie"
+  >
+    <span class="badge bg-primary">{{ movie.id }}</span
+    >{{ movie.name }}
+    <span class="btn-close folat-end"></span>
+  </li>
+</ul>
