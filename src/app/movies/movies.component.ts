@@ -28,4 +28,18 @@ export class MoviesComponent {
         this.movies = movies;
       });
   }
+  add(name: string, imageUrl: string, description: string): void {
+    this.movieService
+      .add({
+        name,
+        imageUrl,
+        description,
+      } as Movie)
+      .subscribe((Movie: Movie) => this.movies.push(Movie));
+  }
+
+  delete(movie: Movie): void {
+    this.movies = this.movies.filter((m) => m !== movie);
+    this.movieService.delete(movie).subscribe();
+  }
 }
